@@ -725,7 +725,7 @@ SPL_METHOD(SplDoublyLinkedList, setIteratorMode)
 	intern = Z_SPLDLLIST_P(getThis());
 
 	if (intern->flags & SPL_DLLIST_IT_FIX
-		&& (intern->flags & SPL_DLLIST_IT_LIFO) != (value & SPL_DLLIST_IT_LIFO)) {
+		&& ((intern->flags & SPL_DLLIST_IT_LIFO) != (value & SPL_DLLIST_IT_LIFO))) {
 		zend_throw_exception(spl_ce_RuntimeException, "Iterators' LIFO/FIFO modes for SplStack/SplQueue objects are frozen", 0);
 		return;
 	}
